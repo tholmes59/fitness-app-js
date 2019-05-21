@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # skip_before_action :require_login, only: [:new, :create, :facebook]
 
     def new
         @user = User.new
@@ -11,8 +12,8 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
-          flash[:error] = "Sorry, your username or password was incorrect"
-          redirect_to '/login'
+          flash[:notice] = "Log In failed, please try again."
+          redirect_to login_path
         end
       end
     
