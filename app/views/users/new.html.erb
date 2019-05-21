@@ -13,5 +13,13 @@
 
   <%= f.submit "Sign In" %>
 
+<% end %>
 
+ <% if @user.errors.any? %>
+    <p> Sign Up Failed: </p>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
 <% end %>
