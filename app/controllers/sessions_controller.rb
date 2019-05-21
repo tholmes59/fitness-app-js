@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    # skip_before_action :require_login, only: [:new, :create, :facebook]
+    skip_before_action :require_login, only: [:new, :create, :facebook]
 
     def new
         @user = User.new
