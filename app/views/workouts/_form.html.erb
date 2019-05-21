@@ -1,0 +1,35 @@
+<%= form_for @workout do |f| %>
+
+  <%= f.label :workout_name %>
+  <%= f.text_field :workout_name %><br><br>
+
+  <%= f.label :workout_description %>
+  <%= f.text_area :workout_description %><br><br>
+
+  <%= f.fields_for :workout_exercises do |we| %>
+    <%= we.label :sets %>
+    <%= we.text_field :sets %>
+
+    <%= we.label :repetitions %>
+    <%= we.text_field :repetitions %>
+
+    <%= we.fields_for :exercises do |e| %>
+      <%= e.label :exercise_name %>
+      <%= e.text_field :exercise_name %>
+    <% end %><br>
+  <% end %><br><br>
+
+  <%= f.label :workout_instructions %>
+  <%= f.text_area :workout_instructions %><br><br>
+
+  <%= f.submit %>
+<% end %><br>
+
+<% if @workout.errors.any? %>
+    <p> New Exercise Creation Failed: </p>
+        <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+<% end %>
