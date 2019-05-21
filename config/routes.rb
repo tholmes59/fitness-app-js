@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#facebook'
 
   resources :users
+  resources :workouts
 
 end
