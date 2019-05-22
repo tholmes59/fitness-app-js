@@ -1,5 +1,10 @@
 <h1>Workouts</h1>
 
+<% if flash[:message] %>
+<%= flash[:message] %><br><br>
+<% end %>
+
+
 <% if @workouts.present? %>
   
   <% @workouts.each do |workout| %>
