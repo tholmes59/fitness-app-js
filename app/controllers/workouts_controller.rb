@@ -26,6 +26,7 @@ class WorkoutsController < ApplicationController
 
     def show
         set_workout
+        @review = Review.new
     end
 
     def edit
