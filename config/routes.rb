@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :workouts, only: [:index]
   end
 
+  resources :workouts, only: [:show] do 
+    resources :reviews, only: [:new, :create, :index]
+  end
+
   root 'static#home'
   get '/home', to: 'welcome#home'
 end
