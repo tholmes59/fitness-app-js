@@ -4,8 +4,8 @@ class WorkoutExercise < ApplicationRecord
 
     validates :sets, presence: true
     validates :repetitions, presence: true
-    # validates :exercise, presence: true
-    # validates :workout, presence: true
+    validates :exercise, presence: true
+    validates :workout, presence: true
 
     accepts_nested_attributes_for :exercise
 
