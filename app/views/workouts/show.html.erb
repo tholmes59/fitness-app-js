@@ -13,13 +13,13 @@
                 <th>Repetitions</th>
             </tr>
 
-            <tr>
-                <% @workout.workout_exercises.each do |we| %>
+            <% @workout.workout_exercises.each do |we| %>
+            <tr> 
                 <td><%= we.exercise.exercise_name %></td>
                 <td><%= we.sets %></td>
                 <td><%= we.repetitions %></td>
-                <% end %>
             </tr>
+             <% end %>
     </table>
 
 <h4>How to get the most out of it:</h4>
