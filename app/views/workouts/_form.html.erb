@@ -13,7 +13,7 @@
     <%= we.label :repetitions %>
     <%= we.text_field :repetitions %>
 
-    <%= we.fields_for :exercises do |e| %>
+    <%= we.fields_for :exercise do |e| %>
       <%= e.label :exercise_name %>
       <%= e.text_field :exercise_name %>
     <% end %><br>
