@@ -7,7 +7,7 @@ class Workout < ApplicationRecord
     validates :workout_description, presence: true
     validates :workout_instructions, presence: true
 
-    accepts_nested_attributes_for :workout_exercises, reject_if: proc { |attributes| attributes['sets'].blank? && attributes['repetitions'].blank? && attributes['exercise_attributes']['exercise_name'].blank? }
+    accepts_nested_attributes_for :workout_exercises, reject_if: proc { |attributes| attributes[:sets].blank? && attributes[:repetitions].blank? && attributes[:exercise_attributes][:exercise_name].blank? }
 
     def build_multiple_exercises
         7.times { workout_exercises.build.build_exercise }
