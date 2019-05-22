@@ -7,6 +7,8 @@ class WorkoutExercise < ApplicationRecord
     # validates :exercise, presence: true
     # validates :workout, presence: true
 
+    accepts_nested_attributes_for :exercise
+
 
      def exercise_attributes=(exercise_attributes)
         exercise_attributes.values.each do |attribute|
