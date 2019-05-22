@@ -24,3 +24,8 @@
 
 <h4>How to get the most out of it:</h4>
     <p><%= @workout.workout_instructions %></p>
+
+<% if @workout.user == current_user %>
+  <%= link_to "Edit Workout", edit_workout_path(@workout) %>
+  <%= link_to "Delete Workout", workout_path(@workout), method: :delete  %>
+<% end %>
