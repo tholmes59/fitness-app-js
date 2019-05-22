@@ -1,14 +1,14 @@
 <h1>Workouts</h1>
 
 <% if @workouts.present? %>
-  <ul>
+  
   <% @workouts.each do |workout| %>
-    <li><%= link_to workout.workout_name, workout_path(workout) %> created <br>
+    <%= link_to workout.workout_name, workout_path(workout) %> created on <%= workout.date %><br>
     <%= workout.workout_description %><br>
     by <%= link_to workout.user.username, user_path(workout.user) %><br>
-    </li><br>
+    <br>
   <% end %>
-  </ul>
+  
 <% else %>
   <p>There are currently no workouts.</p>
 <% end %>
