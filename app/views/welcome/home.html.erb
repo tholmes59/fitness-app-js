@@ -1,0 +1,8 @@
+<h1>Hi, <%= current_user.username %>.</h1>
+
+<h2>Recently Created Workouts:</h2>
+<ul>
+  <% @workouts.each do |workout| %>
+    <li><%= link_to workout.workout_name, workout %> - created <%= workout.date %> by <%= workout.user.username %></li>
+  <% end %>
+</ul>
