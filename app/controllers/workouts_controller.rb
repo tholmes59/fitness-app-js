@@ -17,8 +17,11 @@ class WorkoutsController < ApplicationController
     end
 
     def index
-        @workouts = Workout.all
-
+        if params[:user_id]
+            @workouts = User.find(params[:user_id]).workouts
+        else
+            @workouts = Workout.all
+        end
     end
 
     def show

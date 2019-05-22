@@ -29,9 +29,9 @@ class SessionsController < ApplicationController
         redirect_to user_path(@user)
       end
     
-      def home
+      # def home
         
-      end
+      # end
     
       def destroy
         session.clear
