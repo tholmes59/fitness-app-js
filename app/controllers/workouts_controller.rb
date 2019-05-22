@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+    before_action :check_user, only: [:edit, :update, :destroy]
 
     def new
         @workout = Workout.new(user_id: params[:user_id])
@@ -39,9 +40,12 @@ class WorkoutsController < ApplicationController
         end
     end
 
-
-
-
+    def destroy
+        set_workout
+        @workout.destroy
+        flash[:message] = "This workout was deleted."
+        redirect_to workouts_path
+    end
 
     private
 
@@ -69,6 +73,14 @@ class WorkoutsController < ApplicationController
             redirect_to workouts_path
         end
     end
+
+    def check_user
+        set_workout
+        if current_user != @workout.user
+          flash[:message] = "You cannot edit or delete a workout from another user."
+          redirect_to user_path(current_user)
+        end
+      end
 
 
 
