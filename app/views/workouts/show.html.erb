@@ -1,1 +1,26 @@
 <h1><%= @workout.workout_name %></h1>
+
+<h4>Workout by <%= link_to @workout.user.username, user_path(@workout.user) %></h4>
+
+<h4>Summary:</h4>
+    <p><%= @workout.workout_description %></p>
+
+<h4>What exercises you'll need to perform:</h4>
+    <table>
+            <tr>
+                <th>Exercise</th>
+                <th>Sets</th>
+                <th>Repetitions</th>
+            </tr>
+
+            <tr>
+                <% @workout.workout_exercises.each do |we| %>
+                <td><%= we.exercise.exercise_name %></td>
+                <td><%= we.sets %></td>
+                <td><%= we.repetitions %></td>
+                <% end %>
+            </tr>
+    </table>
+
+<h4>How to get the most out of it:</h4>
+    <p><%= @workout.workout_instructions %></p>
