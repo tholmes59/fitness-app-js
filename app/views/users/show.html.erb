@@ -1,3 +1,4 @@
+<div class='container users-show'>
 <h1><%= @user.username %>'s Workout Profile!</h1>
 
 <h4>Getting in Shape Here Since: <%= @user.date %></h4>
@@ -5,11 +6,12 @@
 
 <% if @user.workouts.present? %>
   <% @user.workouts.each do |workout| %>
-    <%= link_to workout.workout_name, workout_path(workout) %> created on <%= workout.date %><br>
+    <p><strong><%= link_to workout.workout_name, workout_path(workout) %></strong><br>
     <%= workout.workout_description %><br>
-    by <%= link_to workout.user.username, user_path(workout.user) %><br>
+    by <%= link_to workout.user.username, user_path(workout.user) %> created on <%= workout.date %></p><br>
     <br>
   <% end %>
 <% else %>
   <p>There are currently no workouts.</p>
 <% end %>
+</div>

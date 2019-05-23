@@ -1,8 +1,11 @@
+<div class="container welcome">
 <h1>Hi, <%= current_user.username %>!</h1>
 
-<h2>Recently Created Workouts:</h2>
-<ul>
+<h2>Recently Created Workouts:</h2><br>
+
   <% @workouts.each do |workout| %>
-    <li><%= link_to workout.workout_name, workout %> - created <%= workout.date %> by <%= workout.user.username %></li>
+    <p><%= link_to workout.workout_name, workout %> - created <%= workout.date %> by <%= workout.user.username %></p>
   <% end %>
-</ul>
+
+
+</div>

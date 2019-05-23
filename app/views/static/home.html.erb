@@ -1,6 +1,9 @@
+<div class="container static">
 <h1>Welcome to the Fitness App</h1>
-<h2>Now that you're here lets get in shape!</h2>
+<h2>Now that you're here lets get in shape!</h2><br><br>
 
-<div><%= link_to "Signup", signup_path %></div>
-<div><%= link_to "Login", login_path %></div>
-<div><%= link_to 'Login with Github!', '/auth/github' %></div>
+<div><%= link_to "Signup", signup_path, class: "btn btn-primary" %></div><br>
+<div><%= link_to "Login", login_path, class: "btn btn-primary" %></div><br>
+<div><%= link_to 'Login with Github!', '/auth/github', class: "btn btn-primary" %></div>
+
+</div>

@@ -11,3 +11,162 @@ body {
 .container {
     background-color: #105D7D;
 }
+
+input[type="text"], textarea {
+    background-color : #A3A6A8; 
+}
+
+input[type="email"], textarea {
+    background-color : #A3A6A8; 
+}
+
+input[type="password"], textarea {
+    background-color : #A3A6A8; 
+}
+
+input[type="number"], textarea {
+    background-color : #A3A6A8; 
+}
+
+.welcome {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.static {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.login {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.signup {
+    text-align: center;
+    width: 900px;
+    height: 600px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.users-show {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.workouts-index {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.workouts-show {
+    text-align: justify;
+    width: 800px;
+    height: 800px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    padding-right: 25%;
+    padding-left: 25%;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.workouts-new-edit {
+    text-align: justify;
+    width: 800px;
+    height: 800px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    padding-right: 25%;
+    padding-left: 25%;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.reviews-new {
+    text-align: center;
+    width: 800px;
+    height: 800px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    padding-right: 25%;
+    padding-left: 25%;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}
+
+.review-index {
+    text-align: center;
+    width: 700px;
+    height: 550px;
+    // display: inline-block;
+    margin-top: 70px;
+    padding-top: 30px;
+    // padding-right: 0em;
+    // padding-bottom: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px #09384C;
+}

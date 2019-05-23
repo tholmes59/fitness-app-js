@@ -1,3 +1,4 @@
+<div class="container review-index ">
 <h1>All Reviews for <%= link_to @workout.workout_name, workout_path(@workout) %> </h1>
 <h3><%= review_count_label(@reviews) %></h3>
 
@@ -11,3 +12,4 @@
 
 
 <%= link_to "Add Review", new_workout_review_path %>
+</div>

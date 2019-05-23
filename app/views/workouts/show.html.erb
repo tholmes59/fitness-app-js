@@ -1,3 +1,4 @@
+<div class="container workouts-show">
 <h1><%= @workout.workout_name %></h1>
 
 <% if flash[:message] %>
@@ -43,10 +44,11 @@
     <% end %>
   
 <% end %>
-<%=link_to "See All Reviews", workout_reviews_path(@workout.id) %> <br><br>
-<%=link_to "Write a New Review", new_workout_review_path(@workout.id) %><br><br>
+<%=link_to "See All Reviews", workout_reviews_path(@workout.id), class: "btn btn-primary" %> <br><br>
+<%=link_to "Write a New Review", new_workout_review_path(@workout.id), class: "btn btn-primary" %><br><br>
 
 <% if @workout.user == current_user %>
-  <%= link_to "Edit Workout", edit_workout_path(@workout) %>
-  <%= link_to "Delete Workout", workout_path(@workout), method: :delete  %>
+  <%= link_to "Edit Workout", edit_workout_path(@workout), class: "btn btn-primary" %>
+  <%= link_to "Delete Workout", workout_path(@workout), method: :delete, class: "btn btn-primary"  %>
 <% end %>
+</div>
