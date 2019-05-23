@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
         # end
         @workout = Workout.find_by_id(params[:workout_id])
             if @workout
-               @reviews = @workout.reviews.most_recent
+               @reviews = @workout.reviews
             else
                redirect_to workouts_path
             end
