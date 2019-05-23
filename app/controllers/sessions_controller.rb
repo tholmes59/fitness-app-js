@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:new, :create, :facebook]
 
     def new
+     
         @user = User.new
         render :login
       end
@@ -30,7 +31,6 @@ class SessionsController < ApplicationController
       # end
 
       def github
-        raise "stop".inspect
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.username = auth['info']['name']
           u.email = auth['info']['email']
