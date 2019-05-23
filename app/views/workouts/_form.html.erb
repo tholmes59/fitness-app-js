@@ -1,5 +1,14 @@
 <%= form_for @workout do |f| %>
 
+<% if @workout.errors.any? %>
+    <p> New Exercise Creation Failed: </p>
+        <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+<% end %><br>
+
   <%= f.label :workout_name %>
   <%= f.text_field :workout_name %><br><br>
 
@@ -25,11 +34,4 @@
   <%= f.submit %>
 <% end %><br>
 
-<% if @workout.errors.any? %>
-    <p> New Exercise Creation Failed: </p>
-        <ul>
-        <% @workout.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
-<% end %>
+
