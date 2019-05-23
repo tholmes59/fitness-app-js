@@ -36,13 +36,14 @@
 <%= review_count_label(@workout.reviews) %><br><br>
 <% if @workout.reviews.present? %>
  
-    <% @workout.reviews.most_recent.each do |review| %>
+    <% @workout.reviews.most_recent(3).each do |review| %>
       
        Rated a <%= review.rating %> by <%= review.user.username %> on <%= review.date %> - <%= review.content %><br><br>
       
     <% end %>
   
 <% end %>
+<%=link_to "See All Reviews", workout_reviews_path(@workout.id) %> <br><br>
 <%=link_to "Write a New Review", new_workout_review_path(@workout.id) %><br><br>
 
 <% if @workout.user == current_user %>
