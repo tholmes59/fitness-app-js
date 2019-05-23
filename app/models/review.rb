@@ -8,7 +8,8 @@ class Review < ApplicationRecord
     validates :user_id, presence: true
 
 
-    scope :most_recent, -> { order("created_at desc") }
+    scope :most_recent, -> (limit) { order("created_at desc").limit(limit) }
+    scope :order_by_rating, -> { order("rating desc") }
 
     def self.average_rating
         average(:rating)
