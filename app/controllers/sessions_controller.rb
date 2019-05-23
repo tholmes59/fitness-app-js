@@ -17,7 +17,20 @@ class SessionsController < ApplicationController
         end
       end
     
-      def facebook
+      # def facebook
+      #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      #     u.username = auth['info']['name']
+      #     u.email = auth['info']['email']
+      #     u.password = auth['uid']
+      #   end
+       
+      #   session[:user_id] = @user.id
+    
+      #   redirect_to user_path(@user)
+      # end
+
+      def github
+        raise "stop".inspect
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.username = auth['info']['name']
           u.email = auth['info']['email']
@@ -28,6 +41,20 @@ class SessionsController < ApplicationController
     
         redirect_to user_path(@user)
       end
+
+      # def github
+      #   byebug
+      #   @auth = request.env["omniauth.auth"]
+      #   if @auth
+      #     @user = User.find_or_create_by_omniauth(auth)
+      #     session[:user_id] = @user.id
+      #     redirect_to user_path(@user)
+      #   byebug
+      #     else
+      #       render :new
+          
+      #   end
+      # end
     
       # def home
         
