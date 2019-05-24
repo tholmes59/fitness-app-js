@@ -1,24 +1,27 @@
-# README
+#Fitness-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fitness-app helps the user stay in shape by creating workouts and viewing workouts of other users. Users can also rate and leave reviews of workouts in the app!
 
-Things you may want to cover:
+#Installation & Usage
 
-* Ruby version
+1. Fork and clone this repository
 
-* System dependencies
+2. Run `bundle` install in your terminal
 
-* Configuration
+3. Run rails `db:migrate`
 
-* Database creation
+4. Run `rails s`, to deploy the program in the browser. If using Facebook Omniauth, run `thin start -ssl` to launch website.
 
-* Database initialization
+5. Go to http://localserver:3000 to start navigating, if using Facebook Omniauth, go to https://0.0.0.0:3000/.
 
-* How to run the test suite
+#Contributing
 
-* Services (job queues, cache servers, search engines, etc.)
+Bug reports and pull requests are welcome on GitHub at [Fitness-app repo](https://github.com/tholmes59/fitness-app). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* Deployment instructions
+#License
 
-* ...
+Wine Journal App is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+#Code of Conduct
+
+Everyone interacting in the Fitness-app project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
