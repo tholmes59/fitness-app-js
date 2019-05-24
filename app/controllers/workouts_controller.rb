@@ -12,6 +12,7 @@ class WorkoutsController < ApplicationController
             flash[:message] = "Workout created successfully!"
             redirect_to workout_path(@workout)
         else
+            @workout.build_multiple_exercises
             render :new
         end
     end
