@@ -2,11 +2,11 @@
 
 <% if @workout.errors.any? %>
     <p> New Exercise Creation Failed: </p>
-        <ul>
+        
         <% @workout.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+            <p style="color:red;"><%= msg %></p>
             <% end %>
-        </ul>
+       
 <% end %><br>
 
   <%= f.label :workout_name %>

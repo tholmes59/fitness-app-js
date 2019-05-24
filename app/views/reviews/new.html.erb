@@ -4,12 +4,10 @@
 <%= form_for [@workout, @review] do |f| %>
 
 <% if @review.errors.any? %>
-<h2>There were some errors: </h2>
-    <ul>
+<h2>The review could not be created:</h2>
         <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p style="color:red;"><%= message %></p>
         <% end %>
-    </ul>
 <% end %>
 
 <div>

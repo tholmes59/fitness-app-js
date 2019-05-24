@@ -2,7 +2,7 @@
 <% if @user.errors.any? %>
     <p> Sign Up Failed: </p>
         <% @user.errors.full_messages.each do |msg| %>
-          <%= msg %><br>
+          <p style="color:red;"><%= msg %></p>
         <% end %>
 <% end %>
 <h1>Please Create an Account by Signing Up Below</h1><br>

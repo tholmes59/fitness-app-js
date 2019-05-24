@@ -28,6 +28,21 @@ input[type="number"], textarea {
     background-color : #A3A6A8; 
 }
 
+table, td, th {
+    border: 1px solid white;
+ 
+}
+  
+table {
+    border-collapse: collapse;
+    width: 60%;
+}
+  
+th, td {
+    text-align: left;
+    padding-left: 3px;
+  }
+
 .welcome {
     text-align: center;
     width: 700px;
@@ -170,3 +185,14 @@ input[type="number"], textarea {
     padding: 10px;
     box-shadow: 5px 5px #09384C;
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: -40px;
+    background-color: #09384C;
+    color: white;
+    text-align: center;
+ }

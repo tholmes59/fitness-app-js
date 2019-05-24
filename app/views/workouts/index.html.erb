@@ -1,17 +1,17 @@
 <div class='container workouts-index'>
-<h1>Workouts</h1>
+<h1>Pick A Workout!</h1><br>
 
 <% if flash[:message] %>
-<%= flash[:message] %><br><br>
+<p style="color:red;"><%= flash[:message] %></p>
 <% end %>
 
 
 <% if @workouts.present? %>
   
   <% @workouts.each do |workout| %>
-    <%= link_to workout.workout_name, workout_path(workout) %> created on <%= workout.date %><br>
+    <%= link_to workout.workout_name, workout_path(workout) %><br>
     <%= workout.workout_description %><br>
-    by <%= link_to workout.user.username, user_path(workout.user) %><br>
+    by <%= link_to workout.user.username, user_path(workout.user) %> on <%= workout.date %><br>
     <br>
   <% end %>
   
