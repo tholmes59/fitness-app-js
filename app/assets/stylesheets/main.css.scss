@@ -46,7 +46,7 @@ th, td {
 .welcome {
     text-align: center;
     width: 700px;
-    height: 550px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -60,7 +60,7 @@ th, td {
 .static {
     text-align: center;
     width: 700px;
-    height: 550px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -102,7 +102,7 @@ th, td {
 .users-show {
     text-align: center;
     width: 700px;
-    height: 550px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -116,7 +116,7 @@ th, td {
 .workouts-index {
     text-align: center;
     width: 700px;
-    height: 550px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -130,7 +130,7 @@ th, td {
 .workouts-show {
     text-align: justify;
     width: 800px;
-    height: 800px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -166,7 +166,7 @@ th, td {
 .reviews-new {
     text-align: center;
     width: 800px;
-    height: 800px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;
@@ -178,10 +178,23 @@ th, td {
     box-shadow: 5px 5px #09384C;
 }
 
+.reviews-new textarea {
+    display: inline-block;
+    width: 300px;
+    height: 50px;
+    
+}
+
+.reviews-new input[type="number"] {
+    display: inline-block;
+    width: 50px;
+    
+}
+
 .review-index {
     text-align: center;
     width: 700px;
-    height: 550px;
+    height: auto;
     // display: inline-block;
     margin-top: 70px;
     padding-top: 30px;

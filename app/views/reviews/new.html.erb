@@ -1,14 +1,14 @@
 <div class='container reviews-new'>
-<h1>Add a Review for <%= @workout.workout_name %></h1><br><br>
+<h1>Add a Review for <%= @workout.workout_name %></h1><br>
 
 <%= form_for [@workout, @review] do |f| %>
 
 <% if @review.errors.any? %>
-<h2>The review could not be created:</h2>
+<p>This review could not be created:</p>
         <% @review.errors.full_messages.each do |message| %>
         <p style="color:red;"><%= message %></p>
         <% end %>
-<% end %>
+<% end %><br>
 
 <div>
     <%= f.label :rating, "Rating from 1-5"%><br>
