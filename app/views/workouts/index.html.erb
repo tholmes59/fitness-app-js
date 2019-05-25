@@ -9,7 +9,7 @@
 <% if @workouts.present? %>
   
   <% @workouts.each do |workout| %>
-    <%= link_to workout.workout_name, workout_path(workout) %><br>
+    <u></u><%= link_to workout.workout_name, workout_path(workout) %></u><br>
     <%= workout.workout_description %><br>
     by <%= link_to workout.user.username, user_path(workout.user) %> on <%= workout.date %><br>
     <br>
