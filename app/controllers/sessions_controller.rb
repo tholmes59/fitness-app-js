@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:new, :create, :facebook]
 
     def new
-     
         @user = User.new
         render :login
       end
@@ -41,24 +40,6 @@ class SessionsController < ApplicationController
     
         redirect_to user_path(@user)
       end
-
-      # def github
-      #   byebug
-      #   @auth = request.env["omniauth.auth"]
-      #   if @auth
-      #     @user = User.find_or_create_by_omniauth(auth)
-      #     session[:user_id] = @user.id
-      #     redirect_to user_path(@user)
-      #   byebug
-      #     else
-      #       render :new
-          
-      #   end
-      # end
-    
-      # def home
-        
-      # end
     
       def destroy
         session.clear
