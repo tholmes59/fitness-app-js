@@ -32,7 +32,8 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'jquery-rails'
+gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "bootstrap-sass", ">= 3.4.1"
