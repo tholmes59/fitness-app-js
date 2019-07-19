@@ -23,6 +23,10 @@ class WorkoutsController < ApplicationController
         else
             @workouts = Workout.all
         end
+        respond_to do |f|
+            f.html
+            f.json {render json: @workouts}
+        end
     end
 
     def show
