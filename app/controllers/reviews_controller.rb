@@ -18,11 +18,6 @@ class ReviewsController < ApplicationController
       end
     
       def index
-        # if params[:workout_id]
-        #   @reviews = Workout.find(params[:workout_id]).reviews.most_recent
-        # else
-        #   @reviews = Review.all.most_recent
-        # end
         @workout = Workout.find_by_id(params[:workout_id])
             if @workout
                @reviews = @workout.reviews
