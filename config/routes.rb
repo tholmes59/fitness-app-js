@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   root 'static#home'
   get '/home', to: 'welcome#home'
+
+  get 'workout/longest', to: 'workouts#longest'
 end

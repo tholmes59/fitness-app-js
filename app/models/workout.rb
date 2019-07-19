@@ -21,4 +21,14 @@ class Workout < ApplicationRecord
         7.times { workout_exercises.build.build_exercise }
     end
 
+    scope :longest_workout, -> { joins(:workout_exercises).merge(WorkoutExercise.longest) }
+    
 end
+
+# User.includes(:offers)
+#     .group('user.id')
+#     .order('COUNT(offers.id) DESC')
+#     .references(:offers)
+
+# scope :most_recent, -> (limit) { order("created_at desc").limit(limit) }
+# scope :order_by_rating, -> { order("rating desc") }

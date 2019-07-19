@@ -52,6 +52,10 @@ class WorkoutsController < ApplicationController
         redirect_to workouts_path
     end
 
+    def longest
+        @workouts = Workout.all
+    end
+
     private
 
     def workout_params

@@ -9,6 +9,8 @@ class WorkoutExercise < ApplicationRecord
 
     accepts_nested_attributes_for :exercise
 
+    scope :longest, -> { group("workout_id").order("COUNT(exercise_id) DESC") }
+
 
      def exercise_attributes=(exercise_attributes)
         exercise_attributes.values.each do |attribute|
