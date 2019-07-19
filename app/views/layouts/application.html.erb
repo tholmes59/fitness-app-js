@@ -26,7 +26,7 @@
             <%= link_to "Add Workout", new_workout_path, class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "All Workouts", workouts_path, class: "nav-link" %>
+            <%= link_to "All Workouts", workouts_path, class: "nav-link", id: "all-workouts" %>
           </li>
           <li class="nav-item active">
             <%= link_to "Your Workout Profile", user_path(current_user.id), class: "nav-link" %>
@@ -41,8 +41,9 @@
  
     
 
-
+    <div id="app-container">
     <%= yield %>
+    </div>
 
     <footer class="footer">
         <small>&copy; 2019 <strong>RailsFitnessApp</strong> by Tom Holmes</small>
