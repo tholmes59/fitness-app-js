@@ -1,10 +1,10 @@
 $(() => {
-    bindClickHandleers()
+    bindClickHandlers()
 })
 
-const bindClickHandleers = () => {
+const bindClickHandlers = () => {
     $('#all-workouts').on('click', (e) => {
         e.preventDefault()
-        console.log('test')
+        fetch('/workouts.json')
     })
 }
