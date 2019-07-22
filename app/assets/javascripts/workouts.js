@@ -30,7 +30,8 @@ function Workout(workout) {
 
 Workout.prototype.formatIndex = function() {
     let workoutHtml = `
-    <p>${this.workout_name}</p>
+    <a href="/workouts/${this.id}">${this.workout_name}</a><br>
+    ${this.workout_description}<br><br>
     `
     return workoutHtml;
 }
