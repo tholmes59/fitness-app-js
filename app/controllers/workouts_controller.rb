@@ -32,6 +32,10 @@ class WorkoutsController < ApplicationController
     def show
         set_workout
         @review = Review.new
+        respond_to do |f|
+            f.html
+            f.json {render json: @workout}
+        end
     end
 
     def edit
