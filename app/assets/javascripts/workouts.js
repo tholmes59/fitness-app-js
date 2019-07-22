@@ -25,13 +25,17 @@ function Workout(workout) {
     this.workout_name = workout.workout_name;
     this.workout_description = workout.workout_description;
     this.workout_instructions = workout.workout_instructions;
-    this.created_at = workout.created_at;
+    this.exercise = workout.exercises.map(json => new Exercise(json));
+    this.createdAt = new Date(workout.created_at);
+    this.user = new User(workout.user);
+    this.review = workout.reviews.map(json => new Review(json));ß
 }
 
 Workout.prototype.formatIndex = function() {
     let workoutHtml = `
     <a href="/workouts/${this.id}">${this.workout_name}</a><br>
-    ${this.workout_description}<br><br>
+    ${this.workout_description}<br>
+    by: ${this.user.username} on ${this.createdAt.toLocaleDateString()}<br><br>
     `
     return workoutHtml;
 }
