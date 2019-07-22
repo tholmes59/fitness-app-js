@@ -17,6 +17,15 @@ const bindClickHandlers = () => {
             })
         })
     })
+    $(document).on('click', ".show-link", function(e) {
+        e.preventDefault()
+        let id = $(this).attr('data-id')
+        fetch(`workouts/${id}.json`)
+        .then(res => res.json())
+        .then(workouts => {
+            console.log(workouts)
+        })
+    })
 }
 
 
@@ -28,12 +37,12 @@ function Workout(workout) {
     this.exercise = workout.exercises.map(json => new Exercise(json));
     this.createdAt = new Date(workout.created_at);
     this.user = new User(workout.user);
-    this.review = workout.reviews.map(json => new Review(json));ß
+    this.review = workout.reviews.map(json => new Review(json));
 }
 
 Workout.prototype.formatIndex = function() {
     let workoutHtml = `
-    <a href="/workouts/${this.id}">${this.workout_name}</a><br>
+    <a href="/workouts/${this.id}" data-id="${this.id}" class="show-link">${this.workout_name}</a><br>
     ${this.workout_description}<br>
     by: ${this.user.username} on ${this.createdAt.toLocaleDateString()}<br><br>
     `
