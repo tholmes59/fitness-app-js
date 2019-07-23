@@ -12,7 +12,7 @@ const bindClickHandlers = () => {
             workouts.forEach((workout) => {
                 let newWorkout = new Workout(workout)
                 let workoutHtml = newWorkout.formatIndex()
-                console.log(workoutHtml)
+                // console.log(workoutHtml)
                 $('#app-container').append(workoutHtml).addClass('container workouts-index')
             })
         })
@@ -20,10 +20,15 @@ const bindClickHandlers = () => {
     $(document).on('click', ".show-link", function(e) {
         e.preventDefault()
         let id = $(this).attr('data-id')
-        fetch(`workouts/${id}.json`)
+        fetch(`/workouts/${id}.json`)
         .then(res => res.json())
-        .then(workouts => {
-            console.log(workouts)
+        .then(workout => {
+            console.log(workout)
+            $('#app-container').html(' ')
+                let newWorkout = new Workout(workout)
+                let workoutHtml = newWorkout.formatShow()
+                console.log(workoutHtml)
+                $('#app-container').append(workoutHtml).addClass('container workouts-show')
         })
     })
 }
@@ -45,6 +50,13 @@ Workout.prototype.formatIndex = function() {
     <a href="/workouts/${this.id}" data-id="${this.id}" class="show-link">${this.workout_name}</a><br>
     ${this.workout_description}<br>
     by: ${this.user.username} on ${this.createdAt.toLocaleDateString()}<br><br>
+    `
+    return workoutHtml;
+}
+
+Workout.prototype.formatShow = function() {
+    let workoutHtml = `
+    <h1>${this.workout_name}</h1>
     `
     return workoutHtml;
 }
