@@ -69,7 +69,13 @@ Workout.prototype.formatShow = function() {
     const workoutExercisesReps = this.workout_exercise.map((exercise) => {
         return `${exercise.repetitions}`;
     })
-   
+
+    const reviews = this.review.map((review) => {
+        return `
+        Rated a ${review.rating} by ${review.reviewer} on ${review.createdAt.toLocaleDateString()} - ${review.content}<br><br>
+        `;
+    })
+    
     
     let showWorkoutHtml = 
     `
@@ -107,6 +113,9 @@ Workout.prototype.formatShow = function() {
     <p>${this.workout_instructions}</p><br>
 
     <h4>Reviews:</h4>
+        <div>
+            ${reviews.join('')}
+        </div>
 
     <form id="workoutReviewForm">
         <label>Rating from 1-5:</label><br>
