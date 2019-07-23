@@ -32,6 +32,10 @@ input[type="number"], textarea {
     background-color : #A3A6A8; 
 }
 
+input[type="number"] {
+    background-color : #A3A6A8; 
+}
+
 table, td, th {
     border: 1px solid white;
  
@@ -267,4 +271,8 @@ th, td {
   .loginBtn--facebook:focus {
     background-color: #5B7BD5;
     background-image: linear-gradient(#5B7BD5, #4864B1);
+  }
+
+  #review_rating {
+    background-color : #A3A6A8;
   }
