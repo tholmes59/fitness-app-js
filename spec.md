@@ -1,4 +1,4 @@
-# Specifications for the Rails Assessment
+# Specifications for the Rails with JavaScript Assessment
 
 Project Specs:
 
