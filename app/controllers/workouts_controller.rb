@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
     before_action :check_user, only: [:edit, :update, :destroy]
+    before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
     def new
         @workout = Workout.new(user_id: params[:user_id])
