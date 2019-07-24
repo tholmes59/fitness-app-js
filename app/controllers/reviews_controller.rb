@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
           render json: @review, status: 201
         else
           # render :new
-          render json: @review
+          render json: @review.errors.full_messages, status: 422
         end
       end
     
