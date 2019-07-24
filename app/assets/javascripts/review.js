@@ -3,6 +3,6 @@ function Review(review) {
     this.content = review.content;
     this.rating = review.rating;
     this.reviewer = review.reviewer;
-    this.createAt = new Date(review.create_at);
+    this.createdAt = new Date(review.created_at);
 }
 
