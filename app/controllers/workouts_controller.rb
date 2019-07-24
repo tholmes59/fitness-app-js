@@ -1,6 +1,6 @@
 class WorkoutsController < ApplicationController
     before_action :check_user, only: [:edit, :update, :destroy]
-    before_action :set_workout, only: [:show, :edit, :update, :destroy]
+    before_action :set_workout, only: [:show, :edit, :update, :destroy, :next, :previous]
 
     def new
         @workout = Workout.new(user_id: params[:user_id])
@@ -64,6 +64,14 @@ class WorkoutsController < ApplicationController
     def longest
         @workouts = Workout.all
     end
+
+    def next
+        render json: Workout.find(params[:id]).next
+      end
+    
+      def previous
+        render json: Workout.find(params[:id]).previous
+      end
 
     private
 
