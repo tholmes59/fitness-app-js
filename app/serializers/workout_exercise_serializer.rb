@@ -3,5 +3,5 @@ class WorkoutExerciseSerializer < ActiveModel::Serializer
 
   belongs_to :workout 
   belongs_to :exercise
-   
+  
 end

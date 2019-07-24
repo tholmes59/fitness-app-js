@@ -32,6 +32,16 @@ const bindClickHandlers = () => {
                 $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
         })
     })
+
+    $("#workoutReviewForm").on("submit", function(e) {
+        e.preventDefault()
+        console.log(this)
+        const values = $(this).serialize()
+        let id = $(this).attr('data-id')
+        $post(`/workouts/${id}/reviews`, values).done(function(data) {
+            formatShow();
+        })
+    }) 
 }
 
 
@@ -61,15 +71,17 @@ Workout.prototype.formatIndex = function() {
 Workout.prototype.formatShow = function() {
     
     const workoutExercisesName = this.exercise.map((exercise) => {
-        return `${exercise.exercise_name}`;
+        return `<td>${exercise.exercise_name}</td>`;
     })
 
-    const workoutExercisesSet = this.workout_exercise.map((exercise) => {
-        return `${exercise.sets}`;
+    const workoutExercisesSetReps = this.workout_exercise.map((exercise) => {
+        return `<td>${exercise.sets}</td>
+                <td>${exercise.repetitions}</td>
+        `;
     })
 
     const workoutExercisesReps = this.workout_exercise.map((exercise) => {
-        return `${exercise.repetitions}`;
+        return ``;
     })
 
     const reviews = this.review.map((review) => {
@@ -94,20 +106,13 @@ Workout.prototype.formatShow = function() {
             <th>Repetitions</th>
         </tr>
 
-       <tr>
-        <td>
-            ${workoutExercisesName.join('')}
-           
-        </td>
-
-        <td> 
-            ${workoutExercisesSet.join('')}
-        </td>
-
-        <td>
-            ${workoutExercisesReps.join('')}
-        </td>
+        
+        <tr>
+            <td>${workoutExercisesName.join('')}</td>
+            <td>${workoutExercisesSetReps.join('')}</td>
         </tr>
+        
+        
         
         </table><br>
 
@@ -122,7 +127,7 @@ Workout.prototype.formatShow = function() {
 
     <form id="workoutReviewForm">
         <label>Rating from 1-5:</label><br>
-        <input min="1" max="5 type="number" name="review[rating]" id="review_rating"><br>
+        <input min="1" max="5" type="number" name="review[rating]" id="review_rating"><br>
         <label>Review:</label><br>
         <textarea name="review[content]" id="review_content"></textarea><br><br>
         <input type="submit" name="commit" value="Add Review" class="btn btn-primary"><br><br>
@@ -146,7 +151,4 @@ Workout.prototype.formatShow = function() {
    
     return showWorkoutHtml;
 }
-
-
-
 
