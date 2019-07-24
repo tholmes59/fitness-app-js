@@ -57,13 +57,13 @@ const bindClickHandlers = () => {
         })
     })
 
-    $("#workoutReviewForm").on("submit", function(e) {
+    $(document).on("submit", "#workoutReviewForm", function(e) {
         e.preventDefault()
-        console.log(this)
+        // console.log($(this).serialize())
         const values = $(this).serialize()
-        let id = $(this).attr('data-id')
-        $post(`/workouts/${id}/reviews`, values).done(function(data) {
-            formatShow();
+        let id = $("#workoutReviewForm").attr('data_id')
+        $.post(`/workouts/${id}/reviews`, values).done(function(data) {
+            console.log(data)
         })
     }) 
 }
@@ -146,12 +146,12 @@ Workout.prototype.formatShow = function() {
             ${reviews.join('')}
         </div>
 
-    <form id="workoutReviewForm">
+    <form id="workoutReviewForm" data_id="${this.id}">
         <label>Rating from 1-5:</label><br>
-        <input min="1" max="5" type="number" name="review[rating]" id="review_rating"><br>
+        <input min="0" max="5" type="number" name="review[rating]" id="review_rating"><br>
         <label>Review:</label><br>
         <textarea name="review[content]" id="review_content"></textarea><br><br>
-        <input type="submit" name="commit" value="Add Review" class="btn btn-primary"><br><br>
+        <input type="submit" name="commit" value="Create Review" class="btn btn-primary"><br><br>
     </form>
 
     <button data-id="${this.id}" id="previous-workout" class="btn btn-primary">Previous</button>
