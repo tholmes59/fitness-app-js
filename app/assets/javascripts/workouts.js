@@ -8,7 +8,7 @@ const bindClickHandlers = () => {
         fetch('/workouts.json')
         .then(res => res.json())
         .then(workouts => {
-            $('#app-container').html(' ')
+            $('#app-container').html('<h1>Pick a Workout!</h1>')
             workouts.forEach((workout) => {
                 let newWorkout = new Workout(workout)
                 let workoutHtml = newWorkout.formatIndex()
@@ -46,6 +46,8 @@ function Workout(workout) {
     this.user = new User(workout.user);
     this.review = workout.reviews.map(json => new Review(json));
 }
+
+
 
 Workout.prototype.formatIndex = function() {
     let workoutHtml = `
@@ -113,6 +115,7 @@ Workout.prototype.formatShow = function() {
     <p>${this.workout_instructions}</p><br>
 
     <h4>Reviews:</h4>
+       
         <div>
             ${reviews.join('')}
         </div>
@@ -143,4 +146,7 @@ Workout.prototype.formatShow = function() {
    
     return showWorkoutHtml;
 }
+
+
+
 
