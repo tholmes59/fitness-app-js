@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :index]
   end
 
+  get 'workouts/:id/next', to: 'workouts#next'
+  get 'workouts/:id/previous', to: 'workouts#previous'
+
   root 'static#home'
   get '/home', to: 'welcome#home'
 
