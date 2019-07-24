@@ -6,4 +6,8 @@ class WorkoutSerializer < ActiveModel::Serializer
   has_many :exercises, through: :workout_exercises
   has_many :reviews
 
+  def reviews
+    object.reviews
+  end
+
 end
