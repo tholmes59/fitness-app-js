@@ -23,6 +23,13 @@ class Workout < ApplicationRecord
 
     scope :longest_workout, -> { joins(:workout_exercises).merge(WorkoutExercise.longest) }
     
+    def next
+        Workout.where("id > ?", id).first || Workout.first
+     end
+    
+    def previous
+        Workout.where("id < ?", id).last || Workout.last
+    end
 end
 
 # User.includes(:offers)
