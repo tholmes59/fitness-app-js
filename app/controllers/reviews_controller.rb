@@ -10,10 +10,12 @@ class ReviewsController < ApplicationController
         @review = @workout.reviews.build(review_params)
         @review.user = current_user
         if @review.save
-          flash[:message] = "Sucessfully added review!"
-          redirect_to workout_reviews_path
+          # flash[:message] = "Sucessfully added review!"
+          # redirect_to workout_reviews_path
+          render json: @review, status: 201
         else
-          render :new
+          # render :new
+          render json: @review
         end
       end
     
