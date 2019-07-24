@@ -122,7 +122,7 @@ Workout.prototype.formatShow = function() {
 
     <form id="workoutReviewForm">
         <label>Rating from 1-5:</label><br>
-        <input min="1" max="5 type="number" name="review[rating] id="review_rating"><br>
+        <input min="1" max="5 type="number" name="review[rating]" id="review_rating"><br>
         <label>Review:</label><br>
         <textarea name="review[content]" id="review_content"></textarea><br><br>
         <input type="submit" name="commit" value="Add Review" class="btn btn-primary"><br><br>
