@@ -3,4 +3,6 @@ class ReviewSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :workout
+
+  attribute(:reviewer) {|i| i.object.user.username }
 end
