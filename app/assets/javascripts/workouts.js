@@ -23,12 +23,36 @@ const bindClickHandlers = () => {
         fetch(`/workouts/${id}.json`)
         .then(res => res.json())
         .then(workout => {
-            console.log(workout)
+            // console.log(workout)
             $('#app-container').html(' ')
                 let newWorkoutShow = new Workout(workout)
-                console.log(newWorkoutShow)
+                // console.log(newWorkoutShow)
                 let showWorkoutHtml = newWorkoutShow.formatShow()
                 // console.log(workoutHtml)
+                $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
+        })
+    })
+
+    $(document).on("click", "#next-workout", function() {
+        let id = $(this).attr("data-id")
+        fetch(`workouts/${id}/next.json`)
+        .then(res => res.json())
+        .then(workout => {
+            $('#app-container').html(' ')
+                let newWorkoutShow = new Workout(workout)
+                let showWorkoutHtml = newWorkoutShow.formatShow()
+                $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
+        })
+    })
+
+    $(document).on("click", "#previous-workout", function() {
+        let id = $(this).attr("data-id")
+        fetch(`workouts/${id}/previous.json`)
+        .then(res => res.json())
+        .then(workout => {
+            $('#app-container').html(' ')
+                let newWorkoutShow = new Workout(workout)
+                let showWorkoutHtml = newWorkoutShow.formatShow()
                 $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
         })
     })
@@ -106,13 +130,10 @@ Workout.prototype.formatShow = function() {
             <th>Repetitions</th>
         </tr>
 
-        
         <tr>
             <td>${workoutExercisesName.join('')}</td>
             <td>${workoutExercisesSetReps.join('')}</td>
         </tr>
-        
-        
         
         </table><br>
 
@@ -133,8 +154,8 @@ Workout.prototype.formatShow = function() {
         <input type="submit" name="commit" value="Add Review" class="btn btn-primary"><br><br>
     </form>
 
-    <button class="btn btn-primary">Previous</button>
-    <button class="btn btn-primary">Next</button>
+    <button data-id="${this.id}" id="previous-workout" class="btn btn-primary">Previous</button>
+    <button data-id="${this.id}" id="next-workout" class="btn btn-primary">Next</button>
     `
     // console.log(this.exercise.forEach(i => {this.exercise[i].exercise_name}))
    for (let i =0; i < this.exercise.length; i++) {
