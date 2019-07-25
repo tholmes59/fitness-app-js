@@ -23,10 +23,10 @@ const bindClickHandlers = () => {
         fetch(`/workouts/${id}.json`)
         .then(res => res.json())
         .then(workout => {
-            // console.log(workout)
+            console.log(workout)
             $('#app-container').html(' ')
                 let newWorkoutShow = new Workout(workout)
-                // console.log(newWorkoutShow)
+                console.log(newWorkoutShow)
                 let showWorkoutHtml = newWorkoutShow.formatShow()
                 // console.log(workoutHtml)
                 $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
@@ -63,18 +63,15 @@ const bindClickHandlers = () => {
         const values = $(this).serialize()
         let id = $("#workoutReviewForm").attr('data_id')
         $.post(`/workouts/${id}/reviews`, values).done(function(data) {
-            console.log(data)
+            // console.log(data)
             const newReview = new Review(data)
         })
             fetch(`/workouts/${id}.json`)
             .then(res => res.json())
             .then(workout => {
-                // console.log(workout)
                 $('#app-container').html(' ')
                     let newWorkoutShow = new Workout(workout)
-                    // console.log(newWorkoutShow)
                     let showWorkoutHtml = newWorkoutShow.formatShow()
-                    // console.log(workoutHtml)
                     $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
             })
     }) 
@@ -106,7 +103,7 @@ Workout.prototype.formatIndex = function() {
 
 Workout.prototype.formatShow = function() {
 
-    const workoutExercisesName = this.exercise.map((exercise) => {
+    const workoutExercisesName = this.workout_exercise.map((exercise) => {
         return `
         <tr>
             <td>${exercise.exercise_name}</td>
@@ -115,14 +112,7 @@ Workout.prototype.formatShow = function() {
         </tr>
         `;
     })
-    // console.log(this.exercise)
-    // const workoutExercisesSetReps = this.workout_exercise.map((exercise) => {
-    //     return ``;
-    // })
-    
-    // const workoutExercisesReps = this.workout_exercise.map((exercise) => {
-    //     return ``;
-    // })
+    console.log(this.workout_exercise)
 
     const ratingArray = this.review.map((review) => {
         return `${review.rating}`
@@ -130,7 +120,7 @@ Workout.prototype.formatShow = function() {
 
     const ratingArrayNumber = ratingArray.map(Number);
 
-    const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length)
+    const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length).toFixed(2)
 
     const reviews = this.review.map((review) => {
         return `
