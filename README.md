@@ -1,4 +1,4 @@
-# Fitness-app
+# Fitness-app-js
 
 Fitness-app helps the user stay in shape by creating workouts and viewing workouts of other users. Users can also rate and leave reviews of workouts in the app!
 
