@@ -59,12 +59,24 @@ const bindClickHandlers = () => {
 
     $(document).on("submit", "#workoutReviewForm", function(e) {
         e.preventDefault()
-        // console.log($(this).serialize())
+        console.log($(this).serialize())
         const values = $(this).serialize()
         let id = $("#workoutReviewForm").attr('data_id')
         $.post(`/workouts/${id}/reviews`, values).done(function(data) {
             console.log(data)
+            const newReview = new Review(data)
         })
+            fetch(`/workouts/${id}.json`)
+            .then(res => res.json())
+            .then(workout => {
+                // console.log(workout)
+                $('#app-container').html(' ')
+                    let newWorkoutShow = new Workout(workout)
+                    // console.log(newWorkoutShow)
+                    let showWorkoutHtml = newWorkoutShow.formatShow()
+                    // console.log(workoutHtml)
+                    $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
+            })
     }) 
 }
 
@@ -93,33 +105,44 @@ Workout.prototype.formatIndex = function() {
 }
 
 Workout.prototype.formatShow = function() {
-    
-    const workoutExercisesName = this.exercise.map((exercise) => {
-        return `<td>${exercise.exercise_name}</td>`;
-    })
 
-    const workoutExercisesSetReps = this.workout_exercise.map((exercise) => {
-        return `<td>${exercise.sets}</td>
-                <td>${exercise.repetitions}</td>
+    const workoutExercisesName = this.exercise.map((exercise) => {
+        return `
+        <tr>
+            <td>${exercise.exercise_name}</td>
+            <td>${exercise.sets}</td>
+            <td>${exercise.repetitions}</td>
+        </tr>
         `;
     })
+    // console.log(this.exercise)
+    // const workoutExercisesSetReps = this.workout_exercise.map((exercise) => {
+    //     return ``;
+    // })
+    
+    // const workoutExercisesReps = this.workout_exercise.map((exercise) => {
+    //     return ``;
+    // })
 
-    const workoutExercisesReps = this.workout_exercise.map((exercise) => {
-        return ``;
+    const ratingArray = this.review.map((review) => {
+        return `${review.rating}`
     })
+
+    const ratingArrayNumber = ratingArray.map(Number);
+
+    const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length)
 
     const reviews = this.review.map((review) => {
         return `
-        Rated a ${review.rating} by ${review.reviewer} on ${review.createdAt.toLocaleDateString()} - ${review.content}<br><br>
+            Rated a ${review.rating} by ${review.reviewer} on ${review.createdAt.toLocaleDateString()} - ${review.content}<br><br>
         `;
     })
-    
     
     let showWorkoutHtml = 
     `
     <h1>${this.workout_name}</h1>
     <h4>Workout by: <a href="/users/${this.user.id}">${this.user.username}</a></h4>
-    <h4>Average Rating: ${this.review.rating}</h4>
+    <h4>Average Rating: ${avg}</h4>
     <h4>Summary:</h4>
         <p>${this.workout_description}</p><br>
     <h4>What exercises you will need to perform:</h4>
@@ -130,10 +153,9 @@ Workout.prototype.formatShow = function() {
             <th>Repetitions</th>
         </tr>
 
-        <tr>
-            <td>${workoutExercisesName.join('')}</td>
-            <td>${workoutExercisesSetReps.join('')}</td>
-        </tr>
+        <tbody>
+            ${workoutExercisesName.join('')}
+        </tbody>
         
         </table><br>
 
@@ -142,7 +164,7 @@ Workout.prototype.formatShow = function() {
 
     <h4>Reviews:</h4>
        
-        <div>
+        <div id="show-reviews">
             ${reviews.join('')}
         </div>
 
@@ -157,19 +179,7 @@ Workout.prototype.formatShow = function() {
     <button data-id="${this.id}" id="previous-workout" class="btn btn-primary">Previous</button>
     <button data-id="${this.id}" id="next-workout" class="btn btn-primary">Next</button>
     `
-    // console.log(this.exercise.forEach(i => {this.exercise[i].exercise_name}))
-   for (let i =0; i < this.exercise.length; i++) {
-       var name = this.exercise[i].exercise_name
-    //    console.log(name)
-    //    console.log(this.exercise[i].exercise_name)
-    }
-    for (let i =0; i < this.workout_exercise.length; i++) {
-        // console.log(this.workout_exercise[i].sets)
-     }
-     for (let i =0; i < this.workout_exercise.length; i++) {
-        // console.log(this.workout_exercise[i].repetitions)
-     }
-   
+
     return showWorkoutHtml;
 }
 
