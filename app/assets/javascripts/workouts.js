@@ -17,16 +17,17 @@ const bindClickHandlers = () => {
             })
         })
     })
+
     $(document).on('click', ".show-link", function(e) {
         e.preventDefault()
         let id = $(this).attr('data-id')
         fetch(`/workouts/${id}.json`)
         .then(res => res.json())
         .then(workout => {
-            console.log(workout)
+            // console.log(workout)
             $('#app-container').html(' ')
                 let newWorkoutShow = new Workout(workout)
-                console.log(newWorkoutShow)
+                // console.log(newWorkoutShow)
                 let showWorkoutHtml = newWorkoutShow.formatShow()
                 // console.log(workoutHtml)
                 $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
@@ -77,7 +78,6 @@ const bindClickHandlers = () => {
     }) 
 }
 
-
 function Workout(workout) {
     this.id = workout.id;
     this.workout_name = workout.workout_name;
@@ -89,8 +89,6 @@ function Workout(workout) {
     this.user = new User(workout.user);
     this.review = workout.reviews.map(json => new Review(json));
 }
-
-
 
 Workout.prototype.formatIndex = function() {
     let workoutHtml = `
@@ -112,15 +110,36 @@ Workout.prototype.formatShow = function() {
         </tr>
         `;
     })
-    console.log(this.workout_exercise)
+    // console.log(this.review)
+
+    const reviewCount =  this.review.length
+    // console.log(reviewCount)
+        
+    const totalReviews = () => {
+        if (reviewCount === 0) {
+          return "There are no reviews.";
+        } else if (reviewCount === 1) {
+          return "1 review";
+        } else {
+          return `${reviewCount} reviews`;
+        }
+    }
+    // console.log(totalReviews())
 
     const ratingArray = this.review.map((review) => {
         return `${review.rating}`
     })
+    
+    const averageRating = () => {
+        if (ratingArray !== undefined) {
+        const ratingArrayNumber = ratingArray.map(Number);
 
-    const ratingArrayNumber = ratingArray.map(Number);
-
-    const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length).toFixed(2)
+        const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length).toFixed(2)
+        return `${avg}`
+        } else {
+            return ''
+        }
+    }
 
     const reviews = this.review.map((review) => {
         return `
@@ -132,7 +151,7 @@ Workout.prototype.formatShow = function() {
     `
     <h1>${this.workout_name}</h1>
     <h4>Workout by: <a href="/users/${this.user.id}">${this.user.username}</a></h4>
-    <h4>Average Rating: ${avg}</h4>
+    <h4>Average Rating: ${averageRating()}</h4>
     <h4>Summary:</h4>
         <p>${this.workout_description}</p><br>
     <h4>What exercises you will need to perform:</h4>
@@ -153,6 +172,8 @@ Workout.prototype.formatShow = function() {
     <p>${this.workout_instructions}</p><br>
 
     <h4>Reviews:</h4>
+
+       <p>${totalReviews()}</p>
        
         <div id="show-reviews">
             ${reviews.join('')}
