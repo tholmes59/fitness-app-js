@@ -5,6 +5,7 @@ $(() => {
 const bindClickHandlers = () => {
     $('#all-workouts').on('click', (e) => {
         e.preventDefault()
+        history.pushState(null, null, "workouts");
         fetch('/workouts.json')
         .then(res => res.json())
         .then(workouts => {
@@ -174,7 +175,7 @@ Workout.prototype.formatShow = function() {
     <h4>Reviews:</h4>
 
        <p>${totalReviews()}</p>
-       
+
         <div id="show-reviews">
             ${reviews.join('')}
         </div>
