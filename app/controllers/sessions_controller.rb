@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
           session[:user_id] = @user.id
-          redirect_to user_path(@user)
+          redirect_to home_path
         else
           flash[:notice] = "Log In failed, please try again."
           redirect_to login_path
