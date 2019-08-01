@@ -132,7 +132,7 @@ Workout.prototype.formatShow = function() {
     })
     
     const averageRating = () => {
-        if (ratingArray !== undefined) {
+        if (ratingArray.length !== 0) {
         const ratingArrayNumber = ratingArray.map(Number);
 
         const avg = (ratingArrayNumber.reduce((acc, val) => acc + val)/ratingArrayNumber.length).toFixed(2)
