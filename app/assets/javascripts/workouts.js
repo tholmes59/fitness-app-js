@@ -76,7 +76,34 @@ const bindClickHandlers = () => {
                     let showWorkoutHtml = newWorkoutShow.formatShow()
                     $('#app-container').append(showWorkoutHtml).addClass('container workouts-show')
             })
-    }) 
+    })
+    
+    $('#all-workouts-sorted').on('click', (e) => {
+        e.preventDefault()
+        history.pushState(null, null, "/workouts");
+        fetch('/workouts.json')
+        .then(res => res.json())
+        .then(workouts => {
+            $('#app-container').html('<h1>Pick a Workout!</h1>')
+            const sortedWorkouts = workouts.sort(function(a, b) {
+                var nameA = a.workout_name.toUpperCase();
+                var nameB = b.workout_name.toUpperCase();
+                if (nameA < nameB) {
+                  return -1;
+                }
+                if (nameA > nameB) {
+                  return 1;
+                }
+                return 0;
+              });
+            sortedWorkouts.forEach((workout) => {
+                let newWorkout = new Workout(workout)
+                let workoutHtml = newWorkout.formatIndex()
+                // console.log(workoutHtml)
+                $('#app-container').append(workoutHtml).addClass('container workouts-index')
+            })
+        })
+    })
 }
 
 function Workout(workout) {
